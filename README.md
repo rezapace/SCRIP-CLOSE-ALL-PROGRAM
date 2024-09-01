@@ -1,27 +1,33 @@
 # SCRIP-CLOSE-ALL-PROGRAM
 
-Program di atas menggunakan PowerShell untuk mengambil daftar semua proses yang sedang berjalan di komputer dan memeriksa apakah mereka memiliki judul jendela (mainwindowtitle) dan bukan PowerShell itu sendiri. Jika mereka memenuhi syarat, maka perintah stop-process akan digunakan untuk menutup program tersebut. 
+## Description
 
-Dalam hal ini, perintah yang ditambahkan adalah { $_.processname -ne "powershell" }, yang menghindari penghentian PowerShell itu sendiri.
+This PowerShell script retrieves a list of all running processes on your computer, checks if they have a window title (`mainwindowtitle`), and ensures they are not PowerShell itself. If these conditions are met, the `stop-process` command is used to close those programs.
 
-Penjelasan program ini dapat ditambahkan dalam format README.md seperti di bawah ini:
+## Key Features
 
-# Penjelasan Sederhana Program 'SCRIP-CLOSE-ALL-PROGRAM'
+- Retrieves all running processes.
+- Filters out processes without a window title.
+- Excludes PowerShell from being terminated.
+- Closes all qualifying programs.
 
-Program ini menggunakan PowerShell untuk mengambil daftar semua proses yang sedang berjalan di komputer dan memeriksa apakah mereka memiliki judul jendela dan bukan PowerShell itu sendiri. Jika mereka memenuhi syarat, maka perintah stop-process akan digunakan untuk menutup program tersebut.
+## How to Use
 
-## Cara Menggunakan
+1. **Download the Script**: Download the `script-close-all-program.ps1` file.
+2. **Run the Script**: Double-click the downloaded file to execute it.
+3. **Effect**: The script will close all running programs on your computer, except for PowerShell.
 
-- Silakan unduh file script-close-all-program.ps1.
-- Double-click file tersebut untuk menjalankannya.
-- Setelah dijalankan, program akan menutup semua program yang sedang berjalan di komputer, kecuali PowerShell.
+## Important Notes
 
-## Perhatian
+- **Save Your Work**: Ensure you save all your work and close any programs you want to keep open before running this script.
+- **Data Loss Warning**: Any unsaved data or improperly saved work will be lost if the program is closed by this script.
 
-- Pastikan untuk menyimpan pekerjaan Anda dan menutup program yang ingin Anda simpan sebelum menjalankan script ini.
-- Anda akan kehilangan semua data tidak disimpan atau disimpan dengan benar jika program ditutup oleh script ini.
+## Example Command
 
-```
+```powershell
 (get-process | ? { $_.mainwindowtitle -ne "" -and $_.processname -ne "powershell" } )| stop-process
-jelaskan program di atas
 ```
+
+This command retrieves all processes with a window title, excludes PowerShell, and stops the remaining processes.
+
+
